@@ -1,22 +1,20 @@
 name: myfirstworkflow
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
 jobs:
   job1:
     name: job1
-    outputs: decription:"job1"
-job2:
-  cow:
-    name: Cowsays
-    runs-on: ubuntu-latest
-    steps:
-      - name: Ship it
-        uses: mscoutermarsh/cowsays-action@master
-        with:
-          text: ship ship ship!
-          color: red
-job3:
-  needs: job1
-job4:
-  needs:
-    - job1
-    - job2
+  job2:
+    cow:
+      name: Cowsays
+      runs-on: ubuntu-latest
+      steps:
+        - name: Ship it
+          uses: mscoutermarsh/cowsays-action@master
+          with:
+            text: ship ship ship!
+            color: red
+   job3:
+      needs: job1
+    job4:
+      needs: [job1, job2]
