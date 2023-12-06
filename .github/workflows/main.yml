@@ -2,10 +2,7 @@ name: Manual Trigger Workflow
 
 on:
   workflow_dispatch:
-    inputs:
-      message:
-        description: 'Enter a message for the first job'
-        required: true
+  
 
 jobs:
   job1:
@@ -13,7 +10,7 @@ jobs:
 
     steps:
       - name: Output Text
-        run: echo "Message from user: ${{ github.event.inputs.message }}"
+        run: echo "Message from user"
 
   job2:
     runs-on: ubuntu-latest
@@ -22,15 +19,4 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Run Cowsays Action
-        uses: actions/gh-script@v1
-        with:
-          script: |
-            echo "::set-env name=COWSAYS_MESSAGE::${{ github.event.inputs.message }}"
-          secrets:
-            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Display Cowsays Output
-        run: |
-          echo "Cowsays Output:"
-          echo "${{ env.COWSAYS_MESSAGE }}"
