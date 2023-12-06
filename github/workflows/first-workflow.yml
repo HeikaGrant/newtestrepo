@@ -1,1 +1,10 @@
-
+on: workflow_dispatch
+jobs:
+  first_demo_job:
+    name: job1
+    outputs:
+      decription:"job1"
+  second_demo_job:
+    name: job2
+    outputs:
+      decription:"job2" 
